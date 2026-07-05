@@ -121,7 +121,7 @@ app.listen(8080, () => {
 });
 
 app.get('/', (req, res) => {
-    res.send('Root directory');
+    res.redirect('/listings');
 });
 
 
