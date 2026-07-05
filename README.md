@@ -2,7 +2,7 @@
 
 A full-stack Airbnb-inspired travel accommodation platform built using the MERN backend stack. Users can browse, create, edit and review listings with secure authentication, image uploads, interactive maps, and cloud deployment.
 
-> 🚀 Live Demo: https://your-render-url.onrender.com
+> 🚀 Live Demo:https://wanderlust-explorer-jlz8.onrender.com
 
 ---
 
