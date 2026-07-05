@@ -1,0 +1,168 @@
+<style>
+    .search-inp{
+        border-radius:25px;
+        padding:0.55rem 1rem;
+        font-size:0.9rem;
+        width:100%;
+        border:1px solid #ced4da;
+        box-shadow:none;
+        transition:border-color .2s ease;
+    }
+
+    /* Professional click effect */
+    .search-inp:focus{
+        border-color:#e2313d;
+        box-shadow:none;
+        outline:none;
+    }
+
+    .search-btn{
+        background:#eb2835;
+        color:white;
+        border:none;
+        border-radius:25px;
+        padding:0.55rem 1rem;
+        margin-left:.5rem;
+        white-space:nowrap;
+        box-shadow:none;
+        transition:none;
+    }
+
+    /* Keep button exactly same on hover */
+    .search-btn:hover,
+    .search-btn:focus,
+    .search-btn:active{
+        background:#fe424d !important;
+        color:white !important;
+        border:none !important;
+        box-shadow:none !important;
+        transform:none !important;
+    }
+
+    .search-btn i{
+        margin-right:.4rem;
+    }
+
+    @media(max-width:768px){
+
+        .center-search{
+            margin:1rem 0;
+        }
+
+        .search-btn span{
+            display:none;
+        }
+
+    }
+</style>
+
+<nav class="navbar navbar-expand-md bg-body-light sticky-top">
+
+    <div class="container-fluid">
+
+        <!-- Logo -->
+        <a class="navbar-brand" href="/listings">
+            <i class="fa-regular fa-compass"></i>
+        </a>
+
+        <!-- Mobile Toggle -->
+        <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup"
+            aria-expanded="false"
+            aria-label="Toggle navigation">
+
+            <span class="navbar-toggler-icon"></span>
+
+        </button>
+
+        <!-- Navbar -->
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+
+            <div class="container-fluid">
+
+                <div class="row align-items-center w-100">
+
+                    <!-- Left -->
+                    <div class="col-md-3">
+
+                        <div class="navbar-nav">
+
+                            <a class="nav-link" href="/listings">
+                                Explore
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                    <!-- Center Search -->
+                    <div class="col-md-6 center-search">
+
+                        <form class="d-flex" role="search">
+
+                            <input
+                                class="form-control search-inp"
+                                type="search"
+                                placeholder="Search destinations"
+                                name="search"
+                                aria-label="Search"
+                            >
+
+                            <button
+                                class="btn search-btn"
+                                type="submit">
+
+                                <i class="fa-solid fa-magnifying-glass"></i>
+
+                                <span>Search</span>
+
+                            </button>
+
+                        </form>
+
+                    </div>
+
+                    <!-- Right -->
+                    <div class="col-md-3">
+
+                        <div class="navbar-nav justify-content-md-end">
+
+                            <a class="nav-link" href="/listings/new">
+                                Wanderlust Listing
+                            </a>
+
+                            <% if(!currUser){ %>
+
+                                <a class="nav-link" href="/signup">
+                                    <b>Sign up</b>
+                                </a>
+
+                                <a class="nav-link" href="/login">
+                                    <b>Log in</b>
+                                </a>
+
+                            <% } else { %>
+
+                                <a class="nav-link" href="/logout">
+                                    Logout
+                                </a>
+
+                            <% } %>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</nav>

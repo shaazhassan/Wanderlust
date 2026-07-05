@@ -1,0 +1,441 @@
+body{
+  font-family: "Plus Jakarta Sans", sans-serif !important;
+  font-optical-sizing: auto;
+  font-weight:400;
+  font-style: normal;
+
+  display:flex;
+  flex-direction: column;
+  min-height:100vh;
+}
+
+.container{
+    flex: 1;
+}
+
+/* navbar */
+ .navbar{
+    background-color: lightgray;
+    min-height:5rem;
+    border-bottom: 2px solid grey !important;
+
+   
+ }
+
+ .nav-link{
+    color: black !important;
+    font-size: 1.25rem;
+
+ }
+ .fa-compass{
+    color: #eb2835;
+    font-size: 2rem;
+ }
+
+ /*footer */
+ .f-info{
+    display: flex;  
+        justify-content: center;
+        align-items: center;
+        height: 8rem;
+    background-color: #ebebeb;
+    padding: 1rem;
+    flex-wrap: wrap;
+    text-align: center;
+    justify-content: space-evenly  ;
+    border-top: 2px solid grey !important;
+    margin: 1rem 1rem 1rem 1rem;
+    
+ }
+
+ .f-info-links{
+    width: 100%;
+    margin: 0.5rem 0rem 0rem 1rem
+    
+
+
+ }
+ .f-info-socials{
+    width: 100%;
+    /* margin: 0.5rem; */
+    
+ }
+ .f-info-socials a{
+    
+    color:#222222;
+    margin:  1rem;
+    font-size: 1.5rem;
+}
+
+ .f-info-links a{
+    text-decoration: none;
+    color:#222222;
+    margin:  1rem;
+   
+ }
+ .f-info-links a:hover{
+    text-decoration: underline;
+}
+.f-info-copyright{
+   width: 100%;
+    margin: 0.5rem;
+
+    
+}
+/* listing-cards */
+/* listing-cards */
+.listing-card{
+    border: none !important;
+    margin-bottom: 2rem;
+}
+
+.listing-card-img-top{
+    border-radius: 1rem !important;
+    width: 100% !important;
+    object-fit: cover !important;
+}
+
+.listing-card-body{
+    padding:0 !important;
+}
+
+.listing-card-title{
+    margin-top: 1rem !important;
+}
+
+.listing-card-text{
+    font-weight: 400 !important;
+}
+
+.listing-link{
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Optimized Hover Animation */
+
+.listing-card{
+    border:none !important;
+    border-radius:1rem;
+    overflow:hidden;
+    cursor:pointer;
+
+    /* Only animate what changes */
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease;
+
+    /* Hint browser to optimize */
+    will-change: transform;
+}
+
+.listing-card-img-top{
+    transition: transform .3s ease;
+    will-change: transform;
+}
+
+.listing-card-title{
+    transition: color .25s ease;
+}
+
+.listing-card-price{
+    transition: color .25s ease;
+}
+
+.listing-card:hover{
+    transform: translateY(-6px);
+
+    /* Lighter shadow = less repainting */
+    box-shadow: 0 12px 24px rgba(0,0,0,.12);
+}
+
+.listing-link:hover .listing-card-img-top{
+    transform: scale(1.04);
+}
+
+.listing-card:hover .listing-card-title{
+    color:#fe424d;
+}
+
+.listing-card:hover .listing-card-price{
+    color:#e6303c;
+}
+/* add new listing page */
+.form-control{
+    border:1px solid #222222 !important;
+}
+
+/* New Page */
+.add-btn{
+    background-color: #fe424d !important;
+    color: white !important;
+   
+          border-radius:.5rem !important;
+
+    transition: all .25s ease !important;
+}
+
+
+/* ===========================
+   SHOW PAGE
+   =========================== */
+
+.show-listing-card{
+    border-radius: 1rem;
+    overflow: hidden;
+    margin-bottom: 2rem;
+    border: none !important;
+}
+
+/* Stop All Listings listing-card animation */
+
+.show-listing-card:hover{
+    transform:none !important;
+    box-shadow:none !important;
+}
+
+/* Only stop title/price inherited hover */
+.show-listing-card:hover .listing-card-title,
+.show-listing-card:hover .listing-card-price{
+    color: unset;
+}
+/* Image */
+
+.show-img-container{
+    overflow:hidden;
+}
+
+.show-img{
+    height:30rem;
+    width:100%;
+    object-fit:cover;
+    display:block;
+
+    transition:transform .35s ease;
+}
+
+/* Content */
+
+.show-body{
+    padding:1.5rem !important;
+}
+
+.show-title{
+    color:#222222;
+
+    margin-top:.5rem;
+    margin-bottom:1rem;
+
+    font-weight:700;
+
+    transition:
+        color .3s ease,
+        transform .3s ease;
+}
+
+.show-description{
+    color:#555;
+    font-size:1.05rem;
+    line-height:1.6;
+}
+
+.listing-details p{
+    margin-bottom:.75rem;
+}
+
+/* Price */
+
+.show-price{
+    color:#222222;
+
+    font-size:1.4rem;
+    font-weight:700;
+
+    transition:
+        color .3s ease,
+        transform .3s ease;
+}
+
+/* ===========================
+   IMAGE HOVER ONLY
+   =========================== */
+
+.show-img-container:hover .show-img{
+    transform:scale(1.05);
+}
+
+.show-img-container:hover ~ .show-body .show-title{
+    color:#fe424d;
+    transform:translateY(-3px);
+}
+
+.show-img-container:hover ~ .show-body .show-price{
+    color:#e6303c;
+    transform:translateY(-3px);
+}
+
+/* ===========================
+   BUTTONS
+   =========================== */
+
+.show-btns{
+    display:flex;
+    gap:1rem;
+    margin-top:1.5rem;
+}
+
+.show-btns .btn{
+    border-radius:.5rem !important;
+
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease,
+        background-color .2s ease;
+}
+
+.show-btns .btn:hover{
+    transform:translateY(-2px);
+
+    box-shadow:
+        0 6px 15px rgba(0,0,0,.15);
+}
+
+
+/* ===========================
+   ALL BUTTONS SAME ANIMATION
+   =========================== */
+
+/* ====================================
+   GLOBAL BUTTON HOVER EFFECTS
+   ==================================== */
+
+/* This targets EVERY Bootstrap button and ensures the transition is smooth */
+.btn {
+    border-radius: .5rem !important;
+    /* Keeps the exact smooth combined animation from before */
+    transition: transform .25s ease, box-shadow .25s ease, background-color .25s ease !important;
+}
+
+/* This makes them all float up smoothly together on hover */
+.btn:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.18) !important;
+}
+/* review sectoin in shwo.ejs */
+
+/* ===========================
+   SIMPLE RATING SLIDER
+   =========================== */
+
+/* Make the track line visible against the white background */
+.form-range::-webkit-slider-runnable-track {
+  background-color: #d72e3c !important; /* Soft, visible gray line */
+  height: 6px;
+  border-radius: 3px;
+}
+
+
+/* Make the dragging knob simple and clean */
+.form-range::-webkit-slider-thumb {
+  background-color: #000000 !important; /* Matches your form text color */
+  width: 16px;
+  height: 16px;
+  margin-top: -5px; /* Centers it vertically on the line */
+  border-radius: 50%;
+  border: 2px solid white !important;
+}
+
+/* border for cards in review */
+/* ====================================
+   DARKER COMMENT CARD BORDERS
+   ==================================== */
+.card.col-5.mt-4.ms-3.mb-4,
+.card.col-md-5.mt-4.ms-3.mb-4 {
+    /* Changes the faint border to a crisp, solid dark gray/black outline */
+    border: 2px solid #212529 !important; 
+    
+    /* Optional: slightly deepens the background so the card pops out */
+    background-color: #ffffff !important; 
+    
+    /* Gives it a clean, modern look to match your buttons */
+    border-radius: 0.5rem !important; 
+}
+/* ====================================
+   DARKER COMMENT CARD BORDERS & WRAPPING
+   ==================================== */
+.review-card {
+    border: 2px solid #212529 !important; 
+    background-color: #ffffff !important; 
+    border-radius: 0.5rem !important; 
+    
+    /* Crucial: Forces incredibly long words/strings to break and wrap safely */
+    word-break: break-word; 
+    overflow-wrap: break-word;
+}   
+
+/* Edit page image preview */
+.preview-img {
+    width: 250px;
+    height: 180px;
+    object-fit: cover;
+}
+
+/* map styling */
+#map {
+    height: 400px;
+    width: 100%;
+    border-radius: 15px;
+  
+}
+
+/* ============================= */
+/* Map */
+/* ============================= */
+
+#map{
+    height:400px;
+    width:100%;
+    border-radius:18px;
+    overflow:hidden;
+}
+
+/* ============================= */
+/* Custom Marker */
+/* ============================= */
+
+.custom-marker{
+    font-size:1.8rem;
+    color:#df1624;
+    cursor:pointer;
+
+    filter:drop-shadow(0 6px 10px rgba(0,0,0,.35));
+
+    transition:all .25s ease;
+}
+
+.custom-marker:hover{
+    transform:scale(1.18);
+}
+
+/* ============================= */
+/* Popup */
+/* ============================= */
+
+.popup-content{
+    text-align:center;
+    padding:5px;
+}
+
+.popup-content h5{
+    margin-bottom:8px;
+    color:#d92531;
+}
+
+.popup-content p{
+    margin-bottom:4px;
+}
+
+.popup-content small{
+    color:gray;
+}
+

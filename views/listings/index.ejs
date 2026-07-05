@@ -1,0 +1,221 @@
+<%- layout('layouts/boilerplate') %>
+
+<style>
+    /* ---------------- FILTERS ---------------- */
+
+    #filters {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+        overflow-x: auto;
+        padding: 1rem 0;
+        margin-bottom: 1rem;
+        scrollbar-width: none;
+    }
+
+    #filters::-webkit-scrollbar {
+        display: none;
+    }
+
+    .filter {
+        text-align: center;
+        opacity: 0.75;
+        min-width: 70px;
+        cursor: pointer;
+        transition: all 0.25s ease;
+        color: #222222;
+    }
+
+    .filter i {
+        font-size: 1.35rem;
+        margin-bottom: 0.35rem;
+    }
+
+    .filter p {
+        font-size: 0.8rem;
+        margin: 0;
+    }
+
+    .filter:hover {
+        opacity: 1;
+        color: #fe424d;
+        transform: translateY(-3px);
+    }
+
+    .filter:hover i {
+        color: #fe424d;
+    }
+
+    .tax-info{
+    display:none;
+    color:#fe424d;
+    font-size:0.9rem;
+    font-weight:500;
+}
+
+   .tax-toggle {
+    border: 1.5px solid #bdbdbd;
+    border-radius: 1rem;
+    padding: 0.75rem 1rem;
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    white-space: nowrap;
+    background-color: white;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+/* Make Bootstrap switch more visible */
+
+.form-check-input{
+    border: 1.8px solid #777;
+    cursor: pointer;
+}
+
+.form-check-input:focus{
+    box-shadow: none;
+}
+
+.form-check-label{
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+</style>
+
+<body>
+
+    <!-- Filters -->
+
+    <div id="filters">
+
+        <div class="filter">
+            <i class="fa-solid fa-fire"></i>
+            <p>Trending</p>
+        </div>
+
+        <div class="filter">
+            <i class="fa-solid fa-bed"></i>
+            <p>Rooms</p>
+        </div>
+
+        <div class="filter">
+            <i class="fa-solid fa-city"></i>
+            <p>Iconic Cities</p>
+        </div>
+
+        <div class="filter">
+            <i class="fa-solid fa-mountain"></i>
+            <p>Mountains</p>
+        </div>
+
+        <div class="filter">
+            <i class="fa-solid fa-fort-awesome"></i>
+            <p>Castles</p>
+        </div>
+
+        <div class="filter">
+            <i class="fa-solid fa-water-ladder"></i>
+            <p>Amazing Pools</p>
+        </div>
+
+        <div class="filter">
+            <i class="fa-solid fa-tent"></i>
+            <p>Camping</p>
+        </div>
+
+        <div class="filter">
+            <i class="fa-solid fa-tractor"></i>
+            <p>Farms</p>
+        </div>
+
+        <div class="filter">
+            <i class="fa-regular fa-snowflake"></i>
+            <p>Arctic</p>
+        </div>
+
+        <div class="tax-toggle">
+
+            <div class="form-check form-switch">
+                <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="flexSwitchCheckDefault"
+                >
+            </div>
+
+            <label
+                class="form-check-label ms-2"
+                for="flexSwitchCheckDefault"
+            >
+                Display Total Before Taxes
+            </label>
+
+        </div>
+
+    </div>
+
+    <!-- Listings -->
+
+    <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-4">
+
+        <% for(let listing of alllistings) { %>
+
+            <a class="listing-link" href="/listings/<%= listing._id %>">
+
+                <div class="listing-card col">
+
+                    <img
+                        src="<%= listing.image.url %>"
+                        class="listing-card-img-top"
+                        alt="listing_image"
+                        style="height:20rem"
+                    >
+
+                    <div class="listing-card-body">
+
+                        <h5 class="listing-card-title">
+                            <strong><%= listing.title %></strong>
+                        </h5>
+
+                        <p class="listing-card-text">
+                            <%= listing.description %>
+                        </p>
+
+                        <p class="listing-card-price">
+                            ₹ <%= listing.price.toLocaleString('en-IN') %>
+                            <span class="tax-info">
+                             &nbsp; +18% GST = ₹ <%= Math.round(listing.price * 1.18).toLocaleString("en-IN") %>
+                             </span>
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </a>
+
+        <% } %>
+
+    </div>
+
+</body>
+<script>
+const taxSwitch = document.querySelector("#flexSwitchCheckDefault");
+const taxInfos = document.querySelectorAll(".tax-info");
+
+taxSwitch.addEventListener("change", () => {
+
+    taxInfos.forEach((taxInfo) => {
+
+        if (taxSwitch.checked) {
+            taxInfo.style.display = "inline";
+        }
+        else{
+            taxInfo.style.display = "none";
+        }
+
+    });
+
+});
+
+</script>
