@@ -1,17 +1,49 @@
-
+const {cloudinary}=require('cloudinary');
 const Listing = require('../models/listing');
 const maptilerClient = require("../mapConfig");
 
 
 
-module.exports.index= async (req, res) => {
-        // in an async function, or as a 'thenable':
-        // console.log(maptilerClient.geocoding);
+module.exports.index = async (req, res) => {
 
+    const { category, search } = req.query;
 
-        const alllistings = await Listing.find({});
-        res.render('listings/index.ejs', {  alllistings });
-   
+    let filter = {};
+
+    // Category Filter
+    if (category && category !== "All") {
+        filter.category = category;
+    }
+
+    // Search Filter
+    if (search && search.trim() !== "") {
+
+        filter.$or = [
+
+            { title: { $regex: search, $options: "i" } },
+
+            { location: { $regex: search, $options: "i" } },
+
+            { country: { $regex: search, $options: "i" } },
+
+            { category: { $regex: search, $options: "i" } }
+
+        ];
+
+    }
+
+    const alllistings = await Listing.find(filter);
+
+    res.render("listings/index.ejs", {
+
+        alllistings,
+
+        selectedCategory: category || "All",
+
+        search: search || ""
+
+    });
+
 };
 
 module.exports.renderNewForm=(req, res) => {
@@ -75,21 +107,46 @@ module.exports.renderEditForm= async (req, res) => {
         res.render('listings/edit.ejs', { listing });
     } ;
 
-    module.exports.updateListing= async (req, res) => {
-    //          if(!req.body.listing){
-    //        throw new ExpressError(400,"Send Valid Data");
-    // } as validateLisitng used
-            const { id } = req.params;
-           let listing= await Listing.findByIdAndUpdate(id, req.body.listing);
-           if(typeof req.file !== 'undefined'){
-           let url=req.file.path;
-            let filename=req.file.filename;
-            listing.image={url,filename};
-            await listing.save();
+    module.exports.updateListing = async (req, res) => {
+
+    const { id } = req.params;
+
+    let listing = await Listing.findByIdAndUpdate(
+        id,
+        req.body.listing,
+        { new: true }
+    );
+
+    // Update location
+    if (req.body.listing.location) {
+
+        const geoData = await maptilerClient.geocoding.forward(
+            req.body.listing.location
+        );
+
+        listing.geometry = geoData.features[0].geometry;
     }
-             req.flash("success","Listing Edited Successfully!");
-            res.redirect(`/listings/${id}`);
-        };
+
+    // Update image
+    if (typeof req.file !== "undefined") {
+
+        // Delete old Cloudinary image
+        if (listing.image && listing.image.filename) {
+            await cloudinary.uploader.destroy(listing.image.filename);
+        }
+
+        // Save new image
+        let url = req.file.path;
+        let filename = req.file.filename;
+
+        listing.image = { url, filename };
+    }
+
+    await listing.save();
+
+    req.flash("success", "Listing Edited Successfully!");
+    res.redirect(`/listings/${id}`);
+};
         
  module.exports.deleteListing= async (req, res) => {
    

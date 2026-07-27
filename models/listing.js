@@ -22,7 +22,25 @@ const listingSchema = new Schema({
     country:{
      type: String
     },
+
+    category: {
+    type: String,
+    required: true,
+    enum: [
+        "Mountain",
+        "Beach",
+        "Forest",
+        "Lakefront",
+        "Camping",
+        "City",
+        "Heritage",
+        "Nature",
+        "Safari",
+        "Luxury",
+    ],
+},
     // defining 1 to many relationship for lisitng :! to ratings :n
+
     geometry: {
     type: {
         type: String,

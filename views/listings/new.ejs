@@ -45,6 +45,49 @@
         </div>
 
       <br>
+        <div class="mb-3">
+    <label for="category" class="form-label">Category:</label>
+
+    <select
+        class="form-select"
+        id="category"
+        name="listing[category]"
+        required
+    >
+        <option value="" selected disabled>
+            Select Category
+        </option>
+
+        <option value="Mountain">🏔 Mountain</option>
+
+        <option value="Beach">🏖 Beach</option>
+
+        <option value="Forest">🌲 Forest</option>
+
+        <option value="Lakefront">🌊 Lakefront</option>
+
+        <option value="Camping">🏕 Camping</option>
+
+        <option value="City">🏙 City</option>
+
+        <option value="Heritage">🏰 Heritage</option>
+
+        <option value="Nature">🌿 Nature</option>
+
+        <option value="Safari">🦁 Safari</option>
+
+        <option value="Luxury">💎 Luxury</option>
+
+    </select>
+
+    <div class="invalid-feedback">
+        Please select a category!
+    </div>
+
+</div>
+<br>
+
+
        <div class="mb-3">
         <label for="country" class="form-label">Country:</label>
         <input type="text"  name="listing[country]" class="form-control" placeholder="Enter Country"required>

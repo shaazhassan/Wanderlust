@@ -1,39 +1,74 @@
-const mongoose = require("mongoose");
-const MONGO_URL = "mongodb://127.0.0.1:27017/WANDERLUST";
+   const path = require("path");
+   if (process.env.NODE_ENV !== "production") {
+ 
 
+require("dotenv").config({
+    path: path.join(__dirname, "../.env"),
+});
+}
+
+
+
+
+const dns = require("node:dns");
+dns.setServers(["1.1.1.1", "8.8.8.8"]);
+
+const mongoose = require("mongoose");
 const Listing = require("../models/listing");
+const User = require("../models/user");
 const initData = require("./data");
 
-main()
-    .then(() => {
-        console.log("Connected to MongoDB");
-    })
-    .catch((err) => {
-        console.error("Error connecting to MongoDB:", err);
-    });
+const dbUrl = process.env.ATLASDB_URL;
+
+// Uncomment for local database
+// const dbUrl = "mongodb://127.0.0.1:27017/WANDERLUST";
+
 
 async function main() {
-    await mongoose.connect(MONGO_URL);
+    await mongoose.connect(dbUrl);
 }
 
 const initDB = async () => {
     try {
         await Listing.deleteMany({});
 
-        // Add owner to every sample listing
-        initData.data = initData.data.map((obj) => ({
-            ...obj,
-            owner: "6a3ee0d104a1d3ce8e0ffcc2",
-        }));
+        // Fetch owner automatically
+        const owner = await User.findOne({ username: "shaaz" });
 
-        await Listing.insertMany(initData.data);
+        if (!owner) {
+            throw new Error("Owner user not found!");
+        }
 
-        console.log("Database initialized with sample data");
+        // const listings = initData.data.map((obj) => ({
+        //     ...obj,
+        //     owner: owner._id,
+        // }));
+
+        // await Listing.insertMany(listings);
+      
+        for (let obj of initData.data) {
+
+    const listing = new Listing({
+        ...obj,
+        owner: owner._id,
+    });
+
+    await listing.save();
+}
+
+        console.log("Database Initialized Successfully ✅");
     } catch (err) {
-        console.error("Error initializing database:", err);
+        console.log(err);
     } finally {
         mongoose.connection.close();
     }
 };
 
-initDB();
+main()
+    .then(() => {
+        console.log("Connected to MongoDB");
+        return initDB();
+    })
+    .catch((err) => {
+        console.log(err);
+    });

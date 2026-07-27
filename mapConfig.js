@@ -1,5 +1,5 @@
 const maptilerClient = require("@maptiler/client");
 
-maptilerClient.config.apiKey = process.env.MAP_TOKEN; // Replace with your MapTiler API key
+maptilerClient.config.apiKey = process.env.MAP_TOKEN;
 
 module.exports = maptilerClient;

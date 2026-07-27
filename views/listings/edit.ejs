@@ -54,6 +54,65 @@
         </div>
 
       <br>
+        <div class="mb-3">
+    <label for="category" class="form-label">Category:</label>
+
+    <select
+        class="form-select"
+        id="category"
+        name="listing[category]"
+        required
+    >
+
+        <option value="Mountain" <%= listing.category==="Mountain" ? "selected" : "" %>>
+            🏔 Mountain
+        </option>
+
+        <option value="Beach" <%= listing.category==="Beach" ? "selected" : "" %>>
+            🏖 Beach
+        </option>
+
+        <option value="Forest" <%= listing.category==="Forest" ? "selected" : "" %>>
+            🌲 Forest
+        </option>
+
+        <option value="Lakefront" <%= listing.category==="Lakefront" ? "selected" : "" %>>
+            🌊 Lakefront
+        </option>
+
+        <option value="Camping" <%= listing.category==="Camping" ? "selected" : "" %>>
+            🏕 Camping
+        </option>
+
+        <option value="City" <%= listing.category==="City" ? "selected" : "" %>>
+            🏙 City
+        </option>
+
+        <option value="Heritage" <%= listing.category==="Heritage" ? "selected" : "" %>>
+            🏰 Heritage
+        </option>
+
+        <option value="Nature" <%= listing.category==="Nature" ? "selected" : "" %>>
+            🌿 Nature
+        </option>
+
+        <option value="Safari" <%= listing.category==="Safari" ? "selected" : "" %>>
+            🦁 Safari
+        </option>
+
+        <option value="Luxury" <%= listing.category==="Luxury" ? "selected" : "" %>>
+            💎 Luxury
+        </option>
+
+    </select>
+
+    <div class="invalid-feedback">
+        Please select a category!
+    </div>
+
+</div>
+   <br>
+
        <div class="mb-3">
         <label for="country" class="form-label">Country:</label>
         <input type="text"  name="listing[country]" class="form-control" value="<%=listing.country%>"required>
@@ -68,6 +127,6 @@
     </div>
     </div>
    
-    </form>
+  
     
 </body>

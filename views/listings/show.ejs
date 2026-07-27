@@ -22,10 +22,11 @@
                     <%= listing.title %>
                 </h2>
 
-                <p class="show-price">
-                    <b>Owned By:</b>
-                    <i><%= listing.owner.username %></i>
-                </p>
+               <p class="hosted-by">
+    <i class="fa-solid fa-user"></i>
+    Hosted by
+    <strong><%= listing.owner.username %></strong>
+</p>
 
                 <p class="show-description">
                     <%= listing.description %>
@@ -33,23 +34,65 @@
 
                 <hr>
 
-                <div class="listing-details">
+              <div class="listing-details">
 
-                    <p>
-                        <strong>📍 Location:</strong>
-                        <%= listing.location %>
-                    </p>
+    <div class="row g-3">
 
-                    <p>
-                        <strong>🌍 Country:</strong>
-                        <%= listing.country %>
-                    </p>
+        <div class="col-md-6">
+            <p class="detail-item">
+                <i class="fa-solid fa-location-dot detail-icon"></i>
+                <strong>Location</strong><br>
+                <span><%= listing.location %></span>
+            </p>
+        </div>
 
-                    <p class="show-price">
-                        ₹ <%= listing.price.toLocaleString("en-IN") %>
-                    </p>
+        <div class="col-md-6">
+            <p class="detail-item">
+                <i class="fa-solid fa-earth-asia detail-icon"></i>
+                <strong>Country</strong><br>
+                <span><%= listing.country %></span>
+            </p>
+        </div>
 
-                </div>
+        <div class="col-md-6">
+            <p class="detail-item">
+                <i class="fa-solid fa-tag detail-icon"></i>
+                <strong>Category</strong><br>
+
+                <span class="category-badge">
+
+                    <% if(listing.category==="Mountain"){ %>🏔<% } %>
+                    <% if(listing.category==="Beach"){ %>🏖<% } %>
+                    <% if(listing.category==="Forest"){ %>🌲<% } %>
+                    <% if(listing.category==="Lakefront"){ %>🌊<% } %>
+                    <% if(listing.category==="Camping"){ %>🏕<% } %>
+                    <% if(listing.category==="City"){ %>🏙<% } %>
+                    <% if(listing.category==="Heritage"){ %>🏰<% } %>
+                    <% if(listing.category==="Nature"){ %>🌿<% } %>
+                    <% if(listing.category==="Safari"){ %>🦁<% } %>
+                    <% if(listing.category==="Luxury"){ %>💎<% } %>
+
+                    <%= listing.category %>
+
+                </span>
+            </p>
+        </div>
+
+       <div class="price-box">
+
+    <span class="price-value">
+        ₹ <%= listing.price.toLocaleString("en-IN") %>
+    </span>
+
+    <span class="price-unit">
+        / night
+    </span>
+
+</div>
+
+    </div>
+
+</div>
                 <% if(currUser&&currUser._id.equals(listing.owner._id)) {%>
                 <div class="show-btns">
 
@@ -251,7 +294,7 @@
                         <p class="card-text">
                             <i>- <%= review.comment %></i>
                         </p>
-
+                        <% if(currUser && currUser._id.equals(review.author._id)) { %>
                         <form
                             action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE"
                             method="POST">
@@ -263,7 +306,7 @@
                             </button>
 
                         </form>
-
+                        <% } %>
                     </div>
 
                 </div>

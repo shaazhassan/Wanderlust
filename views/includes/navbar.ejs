@@ -102,15 +102,20 @@
                     <!-- Center Search -->
                     <div class="col-md-6 center-search">
 
-                        <form class="d-flex" role="search">
+                        <form
+    class="d-flex"
+    role="search"
+    action="/listings"
+    method="GET"
+>
 
                             <input
-                                class="form-control search-inp"
-                                type="search"
-                                placeholder="Search destinations"
-                                name="search"
-                                aria-label="Search"
-                            >
+    class="form-control search-inp"
+    type="search"
+    name="search"
+    value="<%= typeof search !== 'undefined' ? search : '' %>"
+    placeholder="Search by city, country or category..."
+>
 
                             <button
                                 class="btn search-btn"
@@ -132,7 +137,7 @@
                         <div class="navbar-nav justify-content-md-end">
 
                             <a class="nav-link" href="/listings/new">
-                                Wanderlust Listing
+                                Become a Host
                             </a>
 
                             <% if(!currUser){ %>

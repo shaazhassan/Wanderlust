@@ -29,7 +29,7 @@ const userRouter=require('./routes/user.js');
 const session=require('express-session');
 const MongoStore=require('connect-mongo').default;
 const flash=require('connect-flash');
-const user = require('./models/user.js');
+
 
 
 
@@ -54,7 +54,7 @@ async function main() {
 }
 
 const store = MongoStore.create({
-    mongoUrl: dbUrl,
+    mongoUrl:   dbUrl,
     crypto: {
         secret: process.env.SECRET
     },

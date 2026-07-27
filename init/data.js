@@ -7,7 +7,13 @@ const sampleListings = [
     },
         price: 2500,
     location: "Kalimpong",
-    country: "India"
+    country: "India",
+    geometry: {
+    type: "Point",
+    coordinates: [88.5015, 27.0624]
+},
+    category: "Mountain",
+    
 },
 {
     title: "Beachside Villa",
@@ -19,7 +25,12 @@ const sampleListings = [
     },
     price: 5000,
     location: "Goa",
-    country: "India"
+        country: "India",
+        geometry: {
+    type: "Point",
+    coordinates: [73.8278, 15.2993]
+},
+    category: "Beach"
 },
 {
     title: "Modern Apartment",
@@ -32,7 +43,12 @@ const sampleListings = [
 
     price: 1800,
     location: "Mumbai",
-    country: "India"
+    country: "India",
+    geometry: {
+    type: "Point",
+    coordinates: [72.8777, 19.0760]
+},
+category: "City"
 },
 {
     title: "Lake House",
@@ -45,7 +61,12 @@ const sampleListings = [
 
     price: 3200,
     location: "Nainital",
-    country: "India"
+    country: "India",
+    geometry: {
+    type: "Point",
+    coordinates: [79.4591, 29.3919]
+},
+category: "Lakefront"
 },
 {
     title: "Desert Camp",
@@ -58,7 +79,12 @@ const sampleListings = [
 
     price: 1500,
     location: "Jaisalmer",
-    country: "India"
+    country: "India",
+    geometry: {
+    type: "Point",
+    coordinates: [70.9083, 26.9157]
+},
+category: "Camping"
 },
 {
     title: "Snow Peak Retreat",
@@ -70,7 +96,12 @@ const sampleListings = [
     },
     price: 3500,
     location: "Manali",
-    country: "India"
+    country: "India",
+    geometry: {
+    type: "Point",
+    coordinates: [77.1892, 32.2432]
+},
+category: "Mountain"
 },
 {
     title: "Forest Cabin",
@@ -83,7 +114,12 @@ const sampleListings = [
 
     price: 2200,
     location: "Shimla",
-    country: "India"
+   country: "India",
+   geometry: {
+    type: "Point",
+    coordinates: [77.1734, 31.1048]
+},
+category: "Forest"
 },
 {
     title: "Luxury Penthouse",
@@ -95,7 +131,12 @@ const sampleListings = [
     },
     price: 8500,
     location: "Bangalore",
-    country: "India"
+    country: "India",
+    geometry: {
+    type: "Point",
+    coordinates: [77.5946, 12.9716]
+},
+category: "Luxury"
 },
 {
     title: "Tea Garden Stay",
@@ -108,7 +149,12 @@ const sampleListings = [
   
     price: 1800,
     location: "Darjeeling",
-    country: "India"
+    country: "India",
+    geometry: {
+    type: "Point",
+    coordinates: [88.2636, 27.0410]
+},
+category: "Nature"
 },
 {
     title: "Historic Haveli",
@@ -121,7 +167,12 @@ const sampleListings = [
   
     price: 4000,
     location: "Jaipur",
-    country: "India"
+   country: "India",
+   geometry: {
+    type: "Point",
+    coordinates: [75.7873, 26.9124]
+},
+category: "Heritage"
 },
 {
     title: "Riverside Cottage",
@@ -134,7 +185,12 @@ const sampleListings = [
 
     price: 2600,
     location: "Rishikesh",
-    country: "India"
+    country: "India",
+    geometry: {
+    type: "Point",
+   coordinates: [78.2676, 30.0869]
+},
+category: "Nature"
 },
 {
     title: "Hilltop Villa",
@@ -147,7 +203,12 @@ const sampleListings = [
 
     price: 6000,
     location: "Ooty",
-    country: "India"
+    geometry: {
+    type: "Point",
+    coordinates: [76.6950, 11.4064]
+},
+    country: "India",
+    category:"Mountain"
 },
 {
     title: "Countryside Farmhouse",
@@ -160,7 +221,12 @@ const sampleListings = [
 
     price: 2000,
     location: "Pune",
-    country: "India"
+   country: "India",
+   geometry: {
+    type: "Point",
+    coordinates: [73.8567, 18.5204]
+},
+category: "Mountain"
 },
 {
     title: "Glass House",
@@ -173,7 +239,12 @@ const sampleListings = [
 
     price: 5500,
     location: "Munnar",
-    country: "India"
+    country: "India",
+    geometry: {
+    type: "Point",
+    coordinates: [77.0595, 10.0889]
+},
+category: "Luxury"
 },
 {
     title: "Safari Lodge",
@@ -186,7 +257,12 @@ const sampleListings = [
 
     price: 7000,
     location: "Ranthambore",
-    country: "India"
+    country: "India",
+    geometry: {
+    type: "Point",
+    coordinates: [76.5026, 26.0173]
+},
+category: "Safari"
 }
 ];
 
